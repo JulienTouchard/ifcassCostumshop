@@ -1,0 +1,12 @@
+<div id="store">
+  <div class="card" *ngFor="let product of tbProducts">
+    <h3 class="cardName">{{product.name}}</h3>
+    <div class="cardImg">
+      <img [src]="product.image" alt="" />
+    </div>
+    <p class="cardDesc">{{product.desc}}</p>
+    <span *ngIf="product.promo" class="cardPromo">Promo Exeptionnelle</span>
+    <div class="price">{{product.price}} €</div>
+    <button (click)="addToCart(product.id);">Ajouter au panier</button>
+  </div>
+</div>
