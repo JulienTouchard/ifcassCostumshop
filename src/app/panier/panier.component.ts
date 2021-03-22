@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CostumProductsService } from '../costum-products.service'
 
 @Component({
   selector: 'app-panier',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PanierComponent implements OnInit {
 
-  constructor() { }
+  constructor( private costumProductsService : CostumProductsService ) { }
+  
+  cart : any[] = [];
+  tbProducts = this.costumProductsService.tbProducts;
+
 
   stopP(event){
     event.stopPropagation();
@@ -23,6 +28,7 @@ export class PanierComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.costumProductsService.insertPanier.subscribe(status=>this.cart = status);
   }
 
 }

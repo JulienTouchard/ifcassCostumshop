@@ -2,9 +2,10 @@
     <div id="panier" (click)="stopP($event);">
         <div class="close" (click)="close('#back');">X</div>
         <h2>Mon Panier</h2>
-        <div>
-            ksdfbsdfsdqfqsfs
-        </div>
-
+        <ul>
+            <li *ngFor="let item of cart">
+                <img src="{{tbProducts[item].image}}" alt=""> {{ tbProducts[item].name }}  {{ tbProducts[item].price }} € <button>supprimer</button>
+            </li>
+        </ul>
     </div>
 </div>

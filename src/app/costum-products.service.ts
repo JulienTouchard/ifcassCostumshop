@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 
 @Injectable({
@@ -7,6 +8,11 @@ import { Injectable } from '@angular/core';
 export class CostumProductsService {
 
   constructor() { }
+  // fonctions destinées à mofdifier les entrées de mon service
+  insertPanier : Subject<any> = new Subject<any[]>();
+
+  
+  // tous mes produits
   tbProducts : any[] = [
     {
       "id":0,

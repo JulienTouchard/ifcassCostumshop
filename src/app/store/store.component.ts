@@ -8,16 +8,17 @@ import { CostumProductsService } from '../costum-products.service'
 })
 export class StoreComponent implements OnInit {
 
-  constructor() { }
+  constructor(private costumProductsService : CostumProductsService) { }
   
-  costumProductsService = new CostumProductsService;
   tbProducts = this.costumProductsService.tbProducts;
-  
-  addToCart(id: Number){
-    console.log(id);
+  cart : any[] = [];
+
+  addToCart(id : Number){
+    this.cart.push(id);
+    this.costumProductsService.insertPanier.next(this.cart);
   }
   
   ngOnInit(): void {
+    this.costumProductsService.insertPanier.subscribe(status=>this.cart = status);
   }
-
 }
